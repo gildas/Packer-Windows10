@@ -5,6 +5,11 @@ if ($ENV:PACKER_BUILDER_TYPE -eq "hyperv-iso") {
   exit 0
 }
 
+if ($ENV:PACKER_BUILDER_TYPE -eq "qemu") {
+  Write-Output "Nothing to do for QEMU/KVM"
+  exit 0
+}
+
 $isopath = "C:\Windows\Temp\windows.iso"
 
 # Mount the .iso, then build the path to the installer by getting the Driveletter attribute from Get-DiskImage piped into Get-Volume and adding a :\setup.exe

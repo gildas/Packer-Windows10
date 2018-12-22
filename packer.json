@@ -61,6 +61,32 @@
       ]
     },
   {    
+    "type": "qemu",
+    "communicator": "winrm",
+    "disk_size": 61440,
+    "disk_interface": "virtio",
+    "format": "qcow2",
+    "floppy_files": [
+      "Autounattend.xml",
+      "update-windows.ps1",
+      "configure-winrm.ps1"
+    ],
+    "headless": true,
+    "iso_url": "{{user `iso_path`}}",
+    "iso_checksum_type": "md5",
+    "iso_checksum": "{{user `iso_md5`}}",    
+    "winrm_username": "vagrant",
+    "winrm_password": "vagrant",
+    "winrm_timeout": "6h",
+    "skip_compaction": false,
+    "accelerator": "kvm",
+    "net_device": "virtio-net",
+    "shutdown_command": "shutdown /s /t 5 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "qemuargs": [
+      [ "-m", "{{user `mem_size`}}M" ]
+      ]
+    },
+  {    
     "type": "vmware-iso",
     "communicator": "winrm",
     "disk_size": 61440,
